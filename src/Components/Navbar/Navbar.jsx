@@ -41,7 +41,7 @@ const Navbar = () => {
         <div className='bg-white'>
         
             
-      <div className=" bg-white">
+      <div className="">
         {/* <a  className="text-5xl" data-tooltip-id="my-tooltip">◕‿‿◕</a> */}
 <Tooltip id="my-tooltip">
   <div>
@@ -61,7 +61,7 @@ displayName}</span></p>
 </Tooltip>
       </div >
 
-                  <div className="navbar bg-base-100 shadow-sm "  data-tooltip-id="my-tooltip">
+                  <div className="navbar  shadow-sm "  data-tooltip-id="my-tooltip">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -116,7 +116,7 @@ displayName}</span></p>
              <div className="main">
                
       <h1>{isDark ?  <p className='text-red-500'>Dark </p> : "Light"}</h1>
-      <button onClick={toggleTheme} className='  '><input type="checkbox" value="synthwave" className="toggle " /></button>
+      <button onClick={toggleTheme} className='  '><input type="checkbox" value="synthwave" className="toggle bg-blue-700 " /></button>
     </div>
             
         </div>
@@ -138,14 +138,14 @@ displayName}</span></p>
   <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
     <li > <Link
             to="/create-assignment"
-            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 font-bold"
+            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 font-bold text-emerald-500"
           >
             Create Assignments
           </Link>
           </li>
     <li><Link
             to="/my-attempts"
-            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 font-bold"
+            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 font-bold text-blue-600"
           >
             My Attempted Assignments
              
@@ -156,13 +156,13 @@ displayName}</span></p>
   <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
     <li><Link
             to="/create-assignment"
-            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 font-bold"
+            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 font-bold text-blue-600"
           >
             Create Assignments
           </Link></li>
     <li><Link
             to="/my-attempts"
-            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 font-bold"
+            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 font-bold text-indigo-600"
           >
             My Attempted Assignments
              
