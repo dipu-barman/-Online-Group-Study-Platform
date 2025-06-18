@@ -127,6 +127,9 @@ displayName}</span></p>
       
       </div> : <Link className="btn btn-outline text-black hover:bg-purple-300" to="/login">login now</Link>
     }
+
+    {/* profile.... */}
+    
    <div>
     {/* <img className='h-12 w-12 rounded-full' src={`${user?user.photoURL :<FaUserAlt  /> }`} alt="" /> */}
     {user? 
