@@ -5,7 +5,7 @@ import Navbar from '../Navbar/Navbar';
 import Footer from '../footer/Footer';
 
 const Attemtedassignment = () => {
-    //  const [selectedDate, setSelectedDate] = useState(new Date());
+   
 
     const [asignmets, setAssignmets] = useState([]);
       console.log(asignmets)
