@@ -64,7 +64,7 @@ const router = createBrowserRouter([
     },
     {
       path: "/view/:id",
-      loader :({params})=>fetch(`http://localhost:3000/assignmets/${params.id}`),
+      loader :({params})=>fetch(`https://my-assignment-11-server-rouge.vercel.app/assignmets/${params.id}`),
       Component: ViewAssignment
     },
      {
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
      {
       // "/update/:id"
       path: "/update/:id",
-      loader :({params})=>fetch(`http://localhost:3000/assignmets/${params.id}`),
+      loader :({params})=>fetch(`https://my-assignment-11-server-rouge.vercel.app/assignmets/${params.id}`),
       Component: UpdateAssignment,
     
     },
@@ -85,7 +85,7 @@ const router = createBrowserRouter([
     },
     {
       path: "/mark/:id",
-          loader :({params})=>fetch(`http://localhost:3000/assignmentmark/${params.id}`),
+          loader :({params})=>fetch(`https://my-assignment-11-server-rouge.vercel.app/assignmentmark/${params.id}`),
       Component: Teachermarking
     },
     

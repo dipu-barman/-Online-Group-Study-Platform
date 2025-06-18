@@ -10,7 +10,7 @@ const [query, setQuery] = useState('');
   const [hasSearched, setHasSearched] = useState(false); // 🔑 new state
 
   useEffect(() => {
-    fetch('http://localhost:3000/assignmets') // 🛠 Make sure this endpoint is correct
+    fetch('https://my-assignment-11-server-rouge.vercel.app/assignmets') // 🛠 Make sure this endpoint is correct
       .then((res) => res.json())
       .then((data) => {
         setOriginalData(data);

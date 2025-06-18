@@ -41,7 +41,7 @@ const TakeAssignment = () => {
     console.log(newAssignment); // For now, log to check
 
     // Send to backend (example URL)
-    fetch('http://localhost:3000/assignmentmark', {
+    fetch('https://my-assignment-11-server-rouge.vercel.app/assignmentmark', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

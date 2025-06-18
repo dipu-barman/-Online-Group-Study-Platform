@@ -15,7 +15,7 @@ const PublicAssignment = () => {
 const [asignmets, setAssignmets] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/assignmets')
+    fetch('https://my-assignment-11-server-rouge.vercel.app/assignmets')
       .then(res => res.json())
       .then(data => {
           setAssignmets(data);

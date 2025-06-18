@@ -10,7 +10,7 @@ const PendingAssignmen = () => {
   console.log(asignmets)
   
     useEffect(() => {
-      fetch('http://localhost:3000/assignmentmark')
+      fetch('https://my-assignment-11-server-rouge.vercel.app/assignmentmark')
         .then(res => res.json())
         .then(data => {
           if(data){

@@ -26,7 +26,7 @@ const PublicAssignmetCard = ({ assignmet,asignmets,setAssignmets }) => {
 }).then((result) => {
   if (result.isConfirmed) {
 
-  fetch(`http://localhost:3000/assignmets/${_id}`,{
+  fetch(`https://my-assignment-11-server-rouge.vercel.app/assignmets/${_id}`,{
        method:'DELETE'
    })
     .then(res =>res.json())

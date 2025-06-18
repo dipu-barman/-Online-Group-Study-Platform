@@ -34,7 +34,7 @@ const Teachermarking = () => {
 
      console.log(obtainedmark,techer,feedback,date,phendingvalue)
 
-  fetch(`http://localhost:3000/assignmentmark/${_id}`,{
+  fetch(`https://my-assignment-11-server-rouge.vercel.app/assignmentmark/${_id}`,{
               method:'PUT',
              headers :{
             'content-type':'application/json'
