@@ -11,9 +11,12 @@ const Mainlayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-
+     
+     {/* search buuton */}
             <Searchpart></Searchpart>
+    {/* Banner button.. */}
             <Banner></Banner>
+            {/* pubilc all assignment... */}
             <PublicAssignment></PublicAssignment>
             <Outlet></Outlet>
             <div className='mt-10'>
