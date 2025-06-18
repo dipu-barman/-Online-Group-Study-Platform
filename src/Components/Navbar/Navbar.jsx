@@ -89,11 +89,7 @@ displayName}</span></p>
      
       
       <li className='font-bold text-black'><NavLink to='/'>Home</NavLink></li>
-       
-       {/* <li className='font-bold text-black'> <NavLink to='/addfree'>Add Task 
-
-
-</NavLink></li> */}
+      
 <li className='font-bold text-black'>
   <NavLink to='/user'>Browse Tasks</NavLink>
 </li>
@@ -108,7 +104,7 @@ displayName}</span></p>
 </li> */}
 
        
-      {/* <NavLink to='/profile'>your profile</NavLink> */}
+    
     </ul>
   </div>
   
