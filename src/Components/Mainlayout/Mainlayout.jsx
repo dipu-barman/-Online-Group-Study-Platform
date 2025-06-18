@@ -16,7 +16,7 @@ const Mainlayout = () => {
             <Searchpart></Searchpart>
     {/* Banner button.. */}
             <Banner></Banner>
-            {/* pubilc all assignment... */}
+      {/* pubilc all assignment... */}
             <PublicAssignment></PublicAssignment>
             <Outlet></Outlet>
             <div className='mt-10'>
