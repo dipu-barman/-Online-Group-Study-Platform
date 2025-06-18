@@ -38,10 +38,10 @@ const Navbar = () => {
 
 
     return (
-        <div>
+        <div className='bg-white'>
         
             
-      <div className="">
+      <div className=" bg-white">
         {/* <a  className="text-5xl" data-tooltip-id="my-tooltip">◕‿‿◕</a> */}
 <Tooltip id="my-tooltip">
   <div>
@@ -98,8 +98,10 @@ displayName}</span></p>
   <NavLink to='/user'>Browse Tasks</NavLink>
 </li>
          
-          {user&&<li className='font-bold text-black'> <NavLink to='pending'>Pending Assignments</NavLink>
-           </li>} 
+       <li className='font-bold text-black'> 
+          {user&& <NavLink to='pending'>Pending Assignments</NavLink>
+          } 
+           </li>
          
 
         {/* <li className='font-bold'>  <NavLink to='/user'></NavLink>  Task Details Page:

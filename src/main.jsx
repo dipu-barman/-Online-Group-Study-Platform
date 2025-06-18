@@ -7,7 +7,7 @@ import Register from './Components/Register/Register.jsx'
 import Signin from './Components/Signin/Signin.jsx'
 import Home from './Components/Home/Home.jsx'
 import Mainlayout from './Components/Mainlayout/Mainlayout.jsx'
-import { createBrowserRouter, RouterProvider } from 'react-router'
+ import { createBrowserRouter, RouterProvider } from 'react-router'
 import CreateAssignments from './Components/assignments/CreateAssignments.jsx'
 import Attemtedassignment from './Components/assignments/Attemtedassignment.jsx'
 import ViewAssignment from './Components/assignments/ViewAssignment.jsx'
@@ -21,42 +21,15 @@ import Privateroute from './Components/Private/Privateroute.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
-    Component:Mainlayout,
-   
-    children:[
-      {
-        index:true,
-       
-        Component:Home
-      },
-      // {
-      //   path:"addfree",
-      //   // Component:Addfree
-      //   element:<Privateroute><Addfree></Addfree></Privateroute>
-      // },
-      // {
-      //   path:"/update/:id",
-      //    loader :({params})=>fetch(`https://as-10-freelaning-server.vercel.app/free/${params.id}`),
-      //   Component:Update
-      // }
-     ]
+    Component: Mainlayout,
+    children:[{ index:true, Component:Home }]
   },
-
-  
-       {
-      path: "login",
-      Component: Signin
-    },
-
-     {
-      path: "/register",
-      Component: Register
-    },
-     {
-      path: "/create-assignment",
-      // Component: CreateAssignments
-       element:<Privateroute><CreateAssignments></CreateAssignments></Privateroute>
-    },
+  { path:"/login", Component:Signin },
+  { path:"/register", Component:Register },
+  {
+    path:"/create-assignment",
+    element:<Privateroute><CreateAssignments/></Privateroute>
+  },
      {
       path: "/my-attempts",
       // Component: Attemtedassignment,

@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Link, useNavigate } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 import Authcontext from '../contexts/Authcontext';
-import { FaEye } from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Register = () => {
     
