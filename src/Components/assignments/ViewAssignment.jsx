@@ -7,8 +7,10 @@ import { useLoaderData } from 'react-router';
 import { BsBootstrapReboot } from 'react-icons/bs';
 import { GoAlertFill } from 'react-icons/go';
 import Footer from '../footer/Footer';
+import Searchpart2 from '../Search/Searchpart2';
 
 const ViewAssignment = () => {
+  
 
     const {
 _id,title,photo,mark,level,deadline,description,email} =useLoaderData()
@@ -20,6 +22,7 @@ _id,title,photo,mark,level,deadline,description,email} =useLoaderData()
     return (
         <div>
             <Navbar></Navbar>
+            <Searchpart2></Searchpart2>
            <div className='flex flex-col md:flex-row justify-center items-center mt-12 gap-8 px-4'>
   <div className='w-full md:w-1/2 flex justify-center'>
     <Lottie animationData={student4} style={style} />

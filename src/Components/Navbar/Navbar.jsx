@@ -4,6 +4,8 @@ import { Link, NavLink } from 'react-router';
 import { Tooltip } from 'react-tooltip';
 import "./nav.css"
 
+import { easeOut, motion } from "framer-motion";
+
 const Navbar = () => {
      const {user,signOutuser} = use(Authcontext)
 //   console.log('hello.iam hero...')
@@ -84,7 +86,10 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <a className="btn btn-ghost text-lg sm:text-xl text-black">FUTURE BOX</a>
+      <a className="btn btn-ghost text-lg sm:text-xl text-black"><motion.span
+                            animate={{ color: ['#ecff33', '#33ffe3', '#ff6133'] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                        >ASSIGNMENT SITE</motion.span></a>
     </div>
 
     {/* Center Links - Show Only lg and above */}
