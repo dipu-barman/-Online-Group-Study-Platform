@@ -3,6 +3,8 @@ import Authcontext from './Authcontext';
 import { auth } from '../../firebase/firebase.init';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 
+const GoogleProvider = new GoogleAuthProvider();
+
 const AuthProvider = ({children}) => {
     
     const [user, setUser] = useState(null);
@@ -24,7 +26,7 @@ const AuthProvider = ({children}) => {
   
   const googleSingIn = () => {
     setLoading(true);
-    return signInWithPopup(auth,GoogleAuthProvider ); // ✅ Use the instance you created
+    return signInWithPopup(auth,GoogleProvider ); // ✅ Use the instance you created
   };
 
 
