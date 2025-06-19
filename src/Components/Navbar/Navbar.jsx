@@ -38,151 +38,142 @@ const Navbar = () => {
 
 
     return (
-        <div className='bg-white'>
-        
-            
-      <div className="">
-        {/* <a  className="text-5xl" data-tooltip-id="my-tooltip">◕‿‿◕</a> */}
-<Tooltip id="my-tooltip">
-  <div>
-    {user&&<><p className='font-bold'><span>name :{user.
-displayName}</span></p>
-    <p className=''><span>{user.email}</span></p>
-    </>
-    }
-    {/* <h3>This is a very interesting header</h3>
-    <p>Here's some interesting stuff:</p>
-    <ul>
-      <li>Some</li>
-      <li>Interesting</li>
-      <li>Stuff</li>
-    </ul> */}
-  </div>
-</Tooltip>
-      </div >
 
-                  <div className="navbar  shadow-sm "  data-tooltip-id="my-tooltip">
-  <div className="navbar-start">
-    <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+
+<div className="bg-white px-4   "data-tooltip-id="my-tooltip">
+  {/* Tooltip (No Changes) */}
+  {user && (<Tooltip id="my-tooltip">
+    <div className="  ">
+      
+        <>
+          <p className="font-bold ">
+            <span>Name: {user.displayName}</span>
+          </p>
+          <p>
+            <span>{user.email}</span>
+          </p>
+        </>
+      
+    </div>
+  </Tooltip>)}
+
+  {/* Navbar - Responsive Only For sm/md */}
+  <div className="navbar px-7 py-5 shadow-sm flex flex-wrap justify-between items-center">
+    {/* Left Part */}
+    <div className="navbar-start w-full md:w-auto flex items-center justify-between">
+      {/* Mobile Dropdown */}
+      <div className="dropdown">
+        <div tabIndex={0} role="button" className="btn btn-ghost p-1 lg:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 md:h-7 md:w-7"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </div>
+        <ul
+          tabIndex={0}
+          className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-10"
+        >
+          <li><NavLink to="/">🏠 Home</NavLink></li>
+          <li><NavLink to="/user">🗂 Browse Tasks</NavLink></li>
+          {user && <li><NavLink to="/pending">🕒 Pending Assignments</NavLink></li>}
+        </ul>
       </div>
-      <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a>Item 1</a></li>
-        <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            {links}
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li><a>Item 3</a></li>
+
+      <a className="btn btn-ghost text-lg sm:text-xl text-black">FUTURE BOX</a>
+    </div>
+
+    {/* Center Links - Show Only lg and above */}
+    <div className="navbar-center hidden lg:flex">
+      <ul className="menu menu-horizontal px-1">
+        <li className="font-bold text-black"><NavLink to="/">🏠 Home</NavLink></li>
+        <li className="font-bold text-black"><NavLink to="/user">🗂 Browse Tasks</NavLink></li>
+        {user && <li className="font-bold text-black"><NavLink to="/pending">🕒 Pending</NavLink></li>}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl text-black">FUTURE BOX</a>
-  </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-     
-      
-      <li className='font-bold text-black'><NavLink to='/'>Home</NavLink></li>
-      
-<li className='font-bold text-black'>
-  <NavLink to='/user'>Browse Tasks</NavLink>
-</li>
-         
-       <li className='font-bold text-black'> 
-          {user&& <NavLink to='pending'>Pending Assignments</NavLink>
-          } 
-           </li>
-         
 
-        {/* <li className='font-bold'>  <NavLink to='/user'></NavLink>  Task Details Page:
-</li> */}
-
-       
-    
-    </ul>
-  </div>
-  
-  {/* added-toggle theme */}
-        <div>
-             <div className="main">
-               
-      <h1>{isDark ?  <p className='text-red-500'>Dark </p> : "Light"}</h1>
-      <button onClick={toggleTheme} className='  '><input type="checkbox" value="synthwave" className="toggle bg-blue-700 " /></button>
+    {/* Theme Toggle */}
+    <div className="w-full md:w-auto flex justify-center items-center mt-2 md:mt-0 gap-2">
+      <span className="text-lg">{isDark ? '🌙' : '☀️'}</span>
+      <button onClick={toggleTheme}>
+        <input type="checkbox" value="synthwave" className="toggle toggle-sm bg-blue-700" />
+      </button>
     </div>
-            
-        </div>
-  <div className="navbar-end flex gap-5">
-    <button className='font-bold btn hover:bg-blue-600'><NavLink to='/register'>Register</NavLink></button>
-    
-   
-    
-    {
-      user?<div className='flex'><Link onClick={handlesignout} className='btn btn-outline hover:bg-green-400 text-black'>sign out</Link>  <br />
-      
-      </div> : <Link className="btn btn-outline text-black hover:bg-purple-300" to="/login">login now</Link>
-    }
 
-    {/* profile.... */}
-    
-   <div>
-    {/* <img className='h-12 w-12 rounded-full' src={`${user?user.photoURL :<FaUserAlt  /> }`} alt="" /> */}
-    {user? 
-    <details className="dropdown">
-  <summary className="btn  m-1"><img className='h-12 w-12 rounded-full  ' src={user.photoURL} alt="profile" /></summary>
-  <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-    <li > <Link
-            to="/create-assignment"
-            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 font-bold text-emerald-500"
-          >
-            Create Assignments
-          </Link>
+    {/* Right Side */}
+    <div className="navbar-end w-full md:w-auto flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4 mt-2 md:mt-0">
+      <NavLink to="/register" className="btn btn-sm md:btn font-bold hover:bg-blue-600 w-full md:w-auto">
+        Register
+      </NavLink>
+
+      {user ? (
+        <button
+          onClick={handlesignout}
+          className="btn btn-outline btn-sm md:btn hover:bg-green-400 text-black w-full md:w-auto"
+        >
+          Sign Out
+        </button>
+      ) : (
+        <Link to="/login" className="btn btn-outline btn-sm md:btn text-black hover:bg-purple-300 w-full md:w-auto">
+          Login Now
+        </Link>
+      )}
+
+      {/* Profile Dropdown */}
+      <details className="dropdown w-full md:w-auto mr-14">
+        <summary className="btn m-1 p-0 flex justify-center">
+          <img
+            className="h-10 w-10 rounded-full object-cover"
+            src={user?.photoURL || 'https://i.ibb.co/5hfGS1SV/user.png'}
+            alt="profile"
+          />
+        </summary>
+        <ul className="menu dropdown-content bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm">
+          <li>
+            <Link to="/create-assignment" className="block px-4 py-2 text-sm font-bold text-emerald-500">
+              📝 Create Assignments
+            </Link>
           </li>
-    <li><Link
-            to="/my-attempts"
-            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 font-bold text-blue-600"
-          >
-            My Attempted Assignments
-             
-          </Link></li>
-  </ul>
-</details>:<details className="dropdown">
-  <summary className="btn m-1"><img className='h-10 w-10 rounded-full' src="https://i.ibb.co/5hfGS1SV/user.png" alt="" /></summary>
-  <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-    <li><Link
-            to="/create-assignment"
-            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 font-bold text-blue-600"
-          >
-            Create Assignments
-          </Link></li>
-    <li><Link
-            to="/my-attempts"
-            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 font-bold text-indigo-600"
-          >
-            My Attempted Assignments
-             
-          </Link></li>
-  </ul>
-</details>}
-    
+          <li>
+            <Link to="/my-attempts" className="block px-4 py-2 text-sm font-bold text-blue-600">
+              📚 My Attempted Assignments
+            </Link>
+          </li>
+        </ul>
+      </details>
 
-     { user&&
-     <>
-     {/* <p className=' hover:bottom-[1.5rem] left-1/2 transform -translate-x-1/2
-     bg-gray-800  px-2 py-1 rounded group-hover:opacity-100 transition-opacity'>{user.providerData[0]. displayName}</p> */}
-<p className=''><span>{user.email}</span></p>
-     </>  }
- 
-   </div>
-    
+      {/* Email - Optional: show below */}
+      {user && (
+        <p className="text-xs sm:text-sm text-gray-600 truncate max-w-[200px] hidden sm:block">
+          {user.email}
+        </p>
+      )}
+    </div>
   </div>
+
+
+
+  
+
+  
 </div>
-        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     );
 };
 
