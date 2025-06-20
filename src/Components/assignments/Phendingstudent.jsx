@@ -13,14 +13,14 @@ const Phendingstudent = ({ok,index}) => {
     // const [go ,setgo]=useState(false)
 
   const handelmark=(id)=>{
-    // if(user.email !== ok.myemail){
-  navigate(`/mark/${id}`);
-//  setgo(true)
+    if(user.email !== ok.myemail){
+    navigate(`/mark/${id}`);
+  // setgo(true)
 
-    // }
-    // else{
-    //     alert('only techer can visit ')
-    // }
+    }
+    else{
+         alert('only techer can visit ')
+     }
   }
 
 
