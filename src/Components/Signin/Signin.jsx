@@ -11,7 +11,7 @@ const Signin = () => {
 
     
 
-    const [errormessage,seterrormessage] =useState('')
+  const [errormessage,seterrormessage] =useState('')
 
   const [showpassword ,setshowpassword] = useState(false)
   const { signInoldUser,googleSingIn } = use(Authcontext);
@@ -49,7 +49,10 @@ const handleSignIn = (e) => {
         // else{
 
         // }
-        const signininfo ={email,lastSignInTime:result.user?.metadata?.lastSignInTime}
+
+
+        // jswt
+        //const signininfo ={email,lastSignInTime:result.user?.metadata?.lastSignInTime}
 
         // fetch(`https://as-10-freelaning-server.vercel.app/users`,{
         //       method:'PATCH',

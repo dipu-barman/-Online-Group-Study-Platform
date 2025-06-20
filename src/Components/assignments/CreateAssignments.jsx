@@ -1,14 +1,17 @@
 import React, { use, useContext, useState } from 'react';
 import Authcontext from '../contexts/Authcontext'
 import Swal from 'sweetalert2';
+import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../footer/Footer';
+import { data } from 'react-router';
 const CreateAssignments = () => {
   const [selectedDate, setSelectedDate] = useState('');
 
-  const {user } = use(Authcontext);
-  
+  const { user } = use(Authcontext);
+  console.log(user.email)
+
 
   const handleCreateAssignment = (e) => {
     e.preventDefault();
@@ -35,33 +38,46 @@ const CreateAssignments = () => {
     console.log(newAssignment); // For now, log to check
 
     // Send to backend (example URL)
-    fetch('https://my-assignment-11-server-rouge.vercel.app/assignmets', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newAssignment)
-    })
-      .then(res => res.json())
+    //     fetch('https://my-assignment-11-server-rouge.vercel.app/assignmets', {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       },
+    //       body: JSON.stringify(newAssignment)
+    //     })
+    //       .then(res => res.json())
+    //       .then(data => {
+    //         console.log('Success:', data);
+    //         // Optionally clear form or show message
+
+    //           if(data.insertedId){
+    // //         console.log('affter adding ',data)
+    //         Swal.fire({
+    //   title: "added successful!",
+    //   icon: "success",
+    //   draggable: true
+    //  });
+    // })
+    // .catch(error => {
+    //   console.error('Error:', error);
+    // });
+
+    axios.post('https://my-assignment-11-server-rouge.vercel.app/assignmets', newAssignment)
       .then(data => {
-        console.log('Success:', data);
-        // Optionally clear form or show message
-        
-          if(data.insertedId){
-//         console.log('affter adding ',data)
-        Swal.fire({
-  title: "added successful!",
-  icon: "success",
-  draggable: true
- });}
-
-
+        console.log(data.data)
+        if (data.data.insertedId) {
+          Swal.fire({
+            title: "added successful!",
+            icon: "success",
+            draggable: true
+          })
+          // navigate to homepage 
+        }
       })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-      e.target.reset();
-
+      .catch(err => {
+        console.log('Error:', err);
+      })
+    //e.target.reset();
   };
 
   return (
@@ -84,7 +100,7 @@ const CreateAssignments = () => {
             <label className="label">
               <span className="label-text">email</span>
             </label>
-            <input type="email" name='email' placeholder="your email" className="input input-bordered w-full" required />
+            <input type="email" name='email'value={user.email} placeholder="your email" className="input input-bordered w-full" required />
           </div>
 
           {/* Photo URL */}

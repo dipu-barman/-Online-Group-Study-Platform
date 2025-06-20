@@ -1,10 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { use, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../footer/Footer';
+import Authcontext from '../contexts/Authcontext';
+import { useState } from 'react';
+
 
 const Phendingstudent = ({ok,index}) => {
-    console.log(ok)
+    console.log(ok);
+    const {user}=use(Authcontext)
+    const navigate =useNavigate()
+    const [go ,setgo]=useState(false)
+
+  const handelmark=(id)=>{
+    if(user.email !== ok.email){
+  navigate(`/mark/${id}`);
+//  setgo(true)
+
+    }
+    else{
+        alert('only techer can visit ')
+    }
+  }
+
+
+
     return (
         <div>
           
@@ -28,9 +48,13 @@ const Phendingstudent = ({ok,index}) => {
                   <p>date :{ok.date} </p>
                  </div>
                  <div className='mt-4'>
-                   <Link to={`/mark/${ok._id}`}><button className='btn btn-primary'>
-                              Give mark
-                          </button></Link>
+                   
+                    <button onClick={()=>handelmark(ok._id)} className='btn btn-primary'>
+                   <Link     >  Give mark </Link> 
+                        
+                
+                         </button>
+                   
                  </div>
                 </div>
 

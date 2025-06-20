@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { use } from 'react';
 import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../footer/Footer';
+import Authcontext from '../contexts/Authcontext';
 
 const TakeAssignment = () => {
+  const {user}=use(Authcontext)
+  console.log(user.email)
 
   const navigate = useNavigate();
 
@@ -140,7 +143,7 @@ const TakeAssignment = () => {
                 <span className="label-text">Your email</span>
                 <label className="label ">
 
-                  <input type="email" name="email" className='input input-bordered w-72' id="" />
+                  <input type="email" name="email" value={user.email} className='input input-bordered w-72' id="" />
                 </label>
 
               </div>

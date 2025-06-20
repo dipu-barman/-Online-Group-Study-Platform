@@ -9,7 +9,7 @@ import { easeOut, motion } from "framer-motion";
 const Navbar = () => {
      const {user,signOutuser} = use(Authcontext)
 //   console.log('hello.iam hero...')
-  console.log(user)
+  // console.log(user.email)
 
 
   const handlesignout =() =>{

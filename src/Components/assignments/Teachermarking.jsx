@@ -1,11 +1,12 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import Navbar from '../Navbar/Navbar';
 import { GoAlertFill } from 'react-icons/go';
 import Footer from '../footer/Footer';
 
 const Teachermarking = () => {
+    const navigate =useNavigate()
 
     const {_id,status,date,google} =useLoaderData()
 
@@ -51,12 +52,12 @@ const Teachermarking = () => {
             Swal.fire({
   position: "top-end",
   icon: "success",
-  title: "update successfull",
+  title: "Marking successfull",
   showConfirmButton: false,
   timer: 1500
 });
               }
-            //  console.log(data)
+           navigate('/my-attempts')
          })
 
 

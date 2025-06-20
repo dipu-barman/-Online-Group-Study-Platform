@@ -1,21 +1,26 @@
-import React, { useContext } from 'react';
+import React, { use, useContext } from 'react';
 import Authcontext from '../contexts/Authcontext';
 import { Link, NavLink } from 'react-router';
 import Swal from 'sweetalert2';
 import { BsBootstrapReboot } from 'react-icons/bs';
+import { useState } from 'react';
 
 const PublicAssignmetCard = ({ assignmet,asignmets,setAssignmets }) => {
     const {user } = useContext(Authcontext);
-
+    
     // const Man = ({man,items,setitems}) => {
 
     // const {title,category,budget,descrip} = man
+    console.log(user.email)
+    console.log(assignmet.email)
+
 
     
     const handledelete =(_id)=>{
         console.log(_id)
 
-        Swal.fire({
+        if(user?.email == assignmet?.email){
+              Swal.fire({
   title: "Are you sure?",
   text: "You won't be able to revert this!",
   icon: "warning",
@@ -46,6 +51,44 @@ const PublicAssignmetCard = ({ assignmet,asignmets,setAssignmets }) => {
 
   }
 });
+
+      
+    }
+    else{
+  alert('create user can delete')
+}
+
+//         Swal.fire({
+//   title: "Are you sure?",
+//   text: "You won't be able to revert this!",
+//   icon: "warning",
+//   showCancelButton: true,
+//   confirmButtonColor: "#3085d6",
+//   cancelButtonColor: "#d33",
+//   confirmButtonText: "Yes, delete it!"
+// }).then((result) => {
+//   if (result.isConfirmed) {
+
+//   fetch(`https://my-assignment-11-server-rouge.vercel.app/assignmets/${_id}`,{
+//        method:'DELETE'
+//    })
+//     .then(res =>res.json())
+//     .then(data =>{
+//         if(data.deletedCount){
+
+//             Swal.fire({
+//           title: "Deleted!",
+//           text: "Your file has been deleted.",
+//            icon: "success"
+//           });
+//           const remaingitem = asignmets.filter(itemm =>itemm._id!==_id)
+//           setAssignmets(remaingitem)
+//         }
+//        console.log(data)
+//    })
+
+//   }
+// });
 
     }
 
@@ -82,6 +125,9 @@ const PublicAssignmetCard = ({ assignmet,asignmets,setAssignmets }) => {
 
             {/*  */}
              <button onClick={()=>handledelete(assignmet._id)} className="btn btn-primary">delete</button>
+              
+              
+            
           </div>
             </div>
            
