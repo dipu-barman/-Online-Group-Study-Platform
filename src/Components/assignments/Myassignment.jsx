@@ -25,7 +25,7 @@ const Myassignment = ({student,index}) => {
                  </div>
                  <div className='border-l-2 pl-5 pt-5'>
                   <p> STUDENT Name :{student.student}</p>
-                  <p> STUDENT Email :{student.email}</p>
+                  <p> STUDENT Email :{student.myemail}</p>
                  <p>EXAMINE NAME :{student.techer} </p>
                  </div>
                  <div className='border-l-2 pl-5 pt-5'>

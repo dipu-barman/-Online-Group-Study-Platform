@@ -10,14 +10,14 @@ const CreateAssignments = () => {
   const [selectedDate, setSelectedDate] = useState('');
 
   const { user } = use(Authcontext);
-  console.log(user.email)
+  // console.log(user.email)
 
 
   const handleCreateAssignment = (e) => {
     e.preventDefault();
 
     const form = e.target;
-    const email = form.email.value;
+    const myemail = form.myemail.value;
     const title = form.title.value;
     const photo = form.photo.value;
     const mark = form.mark.value;
@@ -32,7 +32,7 @@ const CreateAssignments = () => {
       level,
       deadline: date,
       description,
-      email
+      myemail
     };
 
     console.log(newAssignment); // For now, log to check
@@ -100,7 +100,7 @@ const CreateAssignments = () => {
             <label className="label">
               <span className="label-text">email</span>
             </label>
-            <input type="email" name='email'value={user.email} placeholder="your email" className="input input-bordered w-full" required />
+            <input type="email" name='myemail' value={user.email} placeholder="your email" className="input input-bordered w-full" required />
           </div>
 
           {/* Photo URL */}

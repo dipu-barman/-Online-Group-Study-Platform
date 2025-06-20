@@ -13,7 +13,7 @@ const ViewAssignment = () => {
   
 
     const {
-_id,title,photo,mark,level,deadline,description,email} =useLoaderData()
+_id,title,photo,mark,level,deadline,description,myemail} =useLoaderData()
 
     
   const style = {
@@ -50,7 +50,7 @@ _id,title,photo,mark,level,deadline,description,email} =useLoaderData()
     <p className='text-[#176AE5] bg-[#176AE51A] px-3 py-2 rounded-3xl text-center'>{title} Experience</p>
     <p className='text-xl font-bold mt-3 text-black'>level: {level}</p>
     <div className='flex flex-col sm:flex-row gap-3 mt-2'>
-      <p className='font-semibold text-black'>{email}</p>
+      <p className='font-semibold text-black'>{myemail}</p>
       <p className='font-semibold text-black flex items-center'><BsBootstrapReboot className='mr-1' /> mark No: {mark}</p>
     </div>
     <div className='flex flex-col sm:flex-row gap-2 font-semibold mt-2'>

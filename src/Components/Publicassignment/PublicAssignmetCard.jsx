@@ -11,15 +11,13 @@ const PublicAssignmetCard = ({ assignmet,asignmets,setAssignmets }) => {
     // const Man = ({man,items,setitems}) => {
 
     // const {title,category,budget,descrip} = man
-    console.log(user.email)
-    console.log(assignmet.email)
-
+   
 
     
     const handledelete =(_id)=>{
         console.log(_id)
 
-        if(user?.email == assignmet?.email){
+         if(user?.email == assignmet?.myemail){
               Swal.fire({
   title: "Are you sure?",
   text: "You won't be able to revert this!",
@@ -53,8 +51,8 @@ const PublicAssignmetCard = ({ assignmet,asignmets,setAssignmets }) => {
 });
 
       
-    }
-    else{
+     }
+     else{
   alert('create user can delete')
 }
 

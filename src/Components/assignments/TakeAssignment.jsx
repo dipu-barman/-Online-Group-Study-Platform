@@ -21,7 +21,7 @@ const TakeAssignment = () => {
     const title = form.title.value;
     const subject = form.subject.value;
     const student = form.name.value;
-    const email = form.email.value;
+    const myemail = form.myemail.value;
     const mark = form.mark.value;
     const google = form.google.value;
     const date = form.date.value;
@@ -32,7 +32,7 @@ const TakeAssignment = () => {
       title,
       subject,
       student,
-      email,
+      myemail,
       mark,
       google,
       date,
@@ -143,7 +143,7 @@ const TakeAssignment = () => {
                 <span className="label-text">Your email</span>
                 <label className="label ">
 
-                  <input type="email" name="email" value={user.email} className='input input-bordered w-72' id="" />
+                  <input type="email" name="myemail" value={user.email}  className='input input-bordered w-72' id="" />
                 </label>
 
               </div>

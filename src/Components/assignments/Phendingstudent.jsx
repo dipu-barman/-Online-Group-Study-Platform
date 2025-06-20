@@ -10,17 +10,17 @@ const Phendingstudent = ({ok,index}) => {
     console.log(ok);
     const {user}=use(Authcontext)
     const navigate =useNavigate()
-    const [go ,setgo]=useState(false)
+    // const [go ,setgo]=useState(false)
 
   const handelmark=(id)=>{
-    if(user.email !== ok.email){
+    // if(user.email !== ok.myemail){
   navigate(`/mark/${id}`);
 //  setgo(true)
 
-    }
-    else{
-        alert('only techer can visit ')
-    }
+    // }
+    // else{
+    //     alert('only techer can visit ')
+    // }
   }
 
 
@@ -41,7 +41,7 @@ const Phendingstudent = ({ok,index}) => {
                  </div>
                  <div className='border-l-2 pl-5 pt-5'>
                   <p>name :{ok.student}</p>
-                  <p>email :{ok.email}</p>
+                  <p>email :{ok.myemail}</p>
                  </div>
                  <div className='border-l-2 pl-5 pt-5'>
                   <p>mark :{ok.mark}</p>
