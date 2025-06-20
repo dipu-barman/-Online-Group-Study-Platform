@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Authcontext from './Authcontext';
 import { auth } from '../../firebase/firebase.init';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import axios from 'axios';
 
 const GoogleProvider = new GoogleAuthProvider();
 
@@ -49,6 +50,20 @@ const AuthProvider = ({children}) => {
       console.log(currentUser)
       setUser(currentUser);
        setLoading(false);
+
+      //  for tokken ....
+
+       if(currentUser?.email){
+        const userData={email:currentUser.email}
+        axios.post('http://localhost:3000/jwt',userData,{
+          withCredentials:true
+        })
+        .then(res=>{
+          console.log(res.data)
+        })
+        .catch(error =>console.log(error)
+        )
+       }
     });
     return () => {
       unscribe();
