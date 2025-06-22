@@ -16,6 +16,7 @@ import UpdateAssignment from './Components/assignments/UpdateAssignment.jsx'
 import TakeAssignment from './Components/assignments/TakeAssignment.jsx'
 import Teachermarking from './Components/assignments/Teachermarking.jsx'
 import Privateroute from './Components/Private/Privateroute.jsx'
+import Faq from './Components/faq/Faq.jsx'
 
  // errorElement:<Eroor></Eroor>,
 const router = createBrowserRouter([
@@ -61,7 +62,10 @@ const router = createBrowserRouter([
           loader :({params})=>fetch(`https://my-assignment-11-server-rouge.vercel.app/assignmentmark/${params.id}`),
       Component: Teachermarking
     },
-    
+    {
+      path:"faq",
+      Component:Faq
+    }
     
     
     

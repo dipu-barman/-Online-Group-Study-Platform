@@ -96,7 +96,7 @@ const Navbar = () => {
     <div className="navbar-center hidden lg:flex">
       <ul className="menu menu-horizontal px-1">
         <li className="font-bold text-black"><NavLink to="/">🏠 Home</NavLink></li>
-        <li className="font-bold text-black"><NavLink to="/user">🗂 Browse Tasks</NavLink></li>
+        <li className="font-bold text-black"><NavLink to="/faq">🗂 FAQ</NavLink></li>
         {user && <li className="font-bold text-black"><NavLink to="/pending">🕒 Pending</NavLink></li>}
       </ul>
     </div>
