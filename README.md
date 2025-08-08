@@ -65,7 +65,7 @@ Users can share assignments, track progress, communicate in real-time, and colla
 1. Clone the repository  
    ```bash
    git clone https://github.com/your-username/your-study-group-repo.git
-Navigate into the project directory
+-Navigate into the project directory
 
 bash
 -Copy
@@ -76,7 +76,7 @@ bash
 bash
 -Copy
 -Edit
--cd client
+cd client
 -npm install
 -Install backend dependencies
 
