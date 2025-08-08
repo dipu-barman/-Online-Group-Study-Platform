@@ -65,49 +65,49 @@ Users can share assignments, track progress, communicate in real-time, and colla
 1. Clone the repository  
    ```bash
    git clone https://github.com/your-username/your-study-group-repo.git
--Navigate into the project directory
+
+
+   Navigate to project directory
 
 bash
--Copy
--Edit
--cd your-study-group-repo
--Install frontend dependencies
-
-bash
--Copy
--Edit
-cd client
--npm install
--Install backend dependencies
-
-bash
--Copy
+- Copy
 Edit
+cd your-repo-name
+- Install frontend dependencies
+
+bash
+- Copy
+Edit
+cd client
+npm install
+- Install backend dependencies
+
+bash
+Copy
+- Edit
 cd ../server
 npm install
--Set up environment variables
+- Setup environment variables
 
--Create .env files in both client and server folders
+- Create .env files in client and server folders with required keys (Firebase config, MongoDB URI, JWT secret, etc.)
 
--Add Firebase config, MongoDB URI, JWT secrets, Socket.IO configs as required
-
--Start frontend development server
+- Run frontend
 
 bash
--Copy
+- Copy
 Edit
 cd ../client
--npm start
--Start backend server
+- npm start
+- Run backend
 
 bash
--Copy
+- Copy
 Edit
 cd ../server
-npm run dev
--Open your browser and visit
+- npm run dev
+- Open browser at
 
 arduino
--Copy
+- Copy
 Edit
--http://localhost:3000
+- http://localhost:3000
