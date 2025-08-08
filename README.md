@@ -69,15 +69,15 @@ Navigate into the project directory
 
 bash
 -Copy
-Edit
-cd your-study-group-repo
+-Edit
+-cd your-study-group-repo
 -Install frontend dependencies
 
 bash
 -Copy
-Edit
-cd client
-npm install
+-Edit
+-cd client
+-npm install
 -Install backend dependencies
 
 bash
