@@ -1,174 +1,205 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import Navbar from '../Navbar/Navbar';
-import { GoAlertFill } from 'react-icons/go';
 import Footer from '../footer/Footer';
+import { GoAlertFill } from 'react-icons/go';
+import { InfinitySpin } from 'react-loader-spinner'; // প্রফেশনাল লোডার
 
 const Teachermarking = () => {
-    const navigate =useNavigate()
+  const navigate = useNavigate();
+  const data = useLoaderData();
+  
+  const [_id, setId] = useState(null);
+  const [status, setStatus] = useState('');
+  const [initialDate, setInitialDate] = useState('');
+  const [google, setGoogle] = useState('');
+  const [loading, setLoading] = useState(true); // লোডিং স্টেট
 
-    const {_id,status,date,google} =useLoaderData()
+  // ডাটা সেট করা এবং লোডার হাইড করা
+  useEffect(() => {
+    if (data) {
+      setId(data._id);
+      setStatus(data.status);
+      setInitialDate(data.date);
+      setGoogle(data.google);
+      setLoading(false);
+    }
+  }, [data]);
 
-    // console.log(data)
-    
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    const form = e.target;
 
+    const obtainedmark = form.obtainedmark.value.trim();
+    const techer = form.teachername.value.trim();
+    const feedback = form.feedback.value.trim();
+    const date = form.date.value;
+    const phendingvalue = 'Complete';
 
-    
-    const handleupdate =e =>{
-        e.preventDefault();
-     const form = e.target;
-
-     
-    const feedback = form.feedback.value;
-    const techer = form.teachername.value;
-    const obtainedmark = form.obtainedmark.value;
-    const date = form.date.value
-    const phendingvalue ="Complete"
-    // const status = {status:'compleate'}
-     
-    console.log(status)
-    
-    //       const fromdata = new FormData(form)
-    //  const updatee = Object.fromEntries(fromdata.entries())
-    const updatee ={obtainedmark,techer,feedback,date,status,phendingvalue}
-
-     console.log(obtainedmark,techer,feedback,date,phendingvalue)
-
-  fetch(`https://my-assignment-11-server-rouge.vercel.app/assignmentmark/${_id}`,{
-              method:'PUT',
-             headers :{
-            'content-type':'application/json'
-          
-         }, 
-          body :JSON.stringify(updatee)
-          })
-         .then(res =>res.json())
-        .then(data =>{
-            console.log(data)
-            console.log(data.modifiedCount)
-              if(data.modifiedCount){
-     
-            Swal.fire({
-  position: "top-end",
-  icon: "success",
-  title: "Marking successfull",
-  showConfirmButton: false,
-  timer: 1500
-});
-              }
-           navigate('/my-attempts')
-         })
-
-
-
+    if (!obtainedmark || !techer || !feedback || !date) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Please fill in all fields',
+      });
+      return;
     }
 
+    const updateData = {
+      obtainedmark,
+      techer,
+      feedback,
+      date,
+      status,
+      phendingvalue,
+    };
 
+    try {
+      const res = await fetch(
+        `https://my-assignment-11-server-rouge.vercel.app/assignmentmark/${_id}`,
+        {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updateData),
+        }
+      );
+      const result = await res.json();
 
+      if (result.modifiedCount) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Marking successful',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate('/my-attempts');
+      } else {
+        throw new Error('Update failed');
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: error.message || 'Something went wrong',
+      });
+    }
+  };
+
+  // লোডার দেখানো
+  if (loading) {
     return (
-        <div>
-            <Navbar></Navbar>
+      <div className="flex justify-center items-center min-h-screen bg-base-100">
+        <InfinitySpin width="200" color="#4fa94d" />
+      </div>
+    );
+  }
 
-            
-            <div className='rounded-2xl bg-[#14141426] p-10 w-10/12 mx-auto mt-14'>
-                <h2 className='text-2xl font-semibold text-center text-black'>SHOW Google  LINK</h2>
-                <div className='flex justify-between mt-4'>
-                    <p className='text-black'>Availability</p>
-                    <p className='bg-[#09982F33] text-[#09982F] px-2 rounded-2xl'>Teacher Available Today</p>
-                </div>
-                
-                <p className='text-center bg-[#FFA0001A] text-[#FFA000] mt-4 text-black p-2 flex gap-3'>
-                <GoAlertFill className='mt-1 ' /> <button></button> <span>GOOGLE DOCS LINK :
-          <a className='text-red-500' href={google}>{google}</a>          </span> </p>
-                <button className='btn btn-block mt-5 bg-[#0EA106] text-white rounded-3xl'>SHOW HERE</button>
+  return (
+    <div className="min-h-screen bg-base-100 text-base-content flex flex-col">
+      <Navbar />
+
+      {/* Google Docs Link Section */}
+      <section className="bg-base-200 rounded-2xl p-8 w-10/12 mx-auto mt-14 shadow-md">
+        <h2 className="text-2xl font-semibold text-center mb-6">Google Docs Link</h2>
+        <div className="flex justify-between items-center mb-4">
+          <p className="text-base-content font-medium">Availability</p>
+          <p className="bg-success/20 text-success px-3 py-1 rounded-2xl font-semibold">
+            Teacher Available Today
+          </p>
+        </div>
+        <p className="bg-warning/20 text-warning p-3 rounded-lg flex items-center gap-2 justify-center text-center">
+          <GoAlertFill className="text-xl" />
+          <span>
+            Google Docs Link:{' '}
+            <a href={google} target="_blank" rel="noopener noreferrer" className="text-error underline">
+              {google}
+            </a>
+          </span>
+        </p>
+        <button
+          type="button"
+          className="btn btn-block btn-success mt-5 rounded-3xl"
+          onClick={() => window.open(google, '_blank')}
+        >
+          Open Document
+        </button>
+      </section>
+
+      {/* Marking Form */}
+      <main className="flex-grow max-w-3xl mx-auto w-full p-8 mt-16 rounded-3xl bg-base-200 shadow-lg">
+        <h2 className="text-3xl font-extrabold text-center mb-12 text-primary">
+          Marking Assignment Form
+        </h2>
+
+        <form onSubmit={handleUpdate} className="space-y-8">
+          <div className="flex flex-col sm:flex-row gap-8">
+            <div className="form-control flex-1">
+              <label className="label">
+                <span className="label-text font-semibold text-base-content">Obtained Mark</span>
+              </label>
+              <input
+                type="number"
+                name="obtainedmark"
+                placeholder="Enter obtained mark"
+                className="input input-bordered w-full bg-base-100 text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
+                min={0}
+                required
+              />
             </div>
 
+            <div className="form-control flex-1">
+              <label className="label">
+                <span className="label-text font-semibold text-base-content">Teacher Name</span>
+              </label>
+              <input
+                type="text"
+                name="teachername"
+                placeholder="Enter your name"
+                className="input input-bordered w-full bg-base-100 text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
+                required
+              />
+            </div>
+          </div>
 
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text font-semibold text-base-content">Deadline</span>
+            </label>
+            <input
+              type="date"
+              name="date"
+              defaultValue={initialDate}
+              className="input input-bordered w-full bg-base-100 text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
+              required
+            />
+          </div>
 
-              <div className='mt-12 mb-16 '>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text font-semibold text-base-content">Feedback</span>
+            </label>
+            <textarea
+              name="feedback"
+              placeholder="Write feedback here..."
+              className="textarea textarea-bordered w-full bg-base-100 text-base-content focus:outline-none focus:ring-2 focus:ring-primary"
+              rows={5}
+              required
+            ></textarea>
+          </div>
 
-            <h2 className='text-3xl font-bold text-center mt-16 mb-8'>MARKING ASSIGNMENT FROM</h2>
+          <button
+            type="submit"
+            className="btn btn-primary btn-block text-lg rounded-full hover:scale-105 transition-transform duration-200"
+          >
+            Submit Assignment
+          </button>
+        </form>
+      </main>
 
-            <form onSubmit={handleupdate} className='w-5/12 mx-auto border-2 p-4 rounded-3xl'>
-            
-
-                <div className=' gap-5 space-y-5'>
-                     {/* Job title */}
-                
-
-                <div className='flex  w-full gap-8'>
-
-                    <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Obtained  mark</span>
-                    </label>
-                    <input type="text" name='obtainedmark' placeholder="your mark" className="input input-bordered w-72" required />
-                </div>
-
-                  {/* select field */}
-             <div className="form-control w-full ">
-                <span className="label-text"> Teacher name</span>
-                    <label className="label ">
-                        
-                        <input type="text" name="teachername" className='input input-bordered w-72 ' id="" required />
-                    </label>
-                   
-                </div>
-
-                </div>
-                 
-                 
-              
-                
-{/*                
-                      <DatePicker
-      showIcon
-      selected={selectedDate}
-      onChange={(date) => setSelectedDate(date)}
-    />
-                */}
-
-
-                 {/* application Deadline */}
-
-                 {/* <div className='flex gap-6 w-full'> */}
-
-                    <div className="form-control ">
-                    <label className="label">
-                        <span className="label-text">Deadline</span>
-                    </label>
-                    <input type="date" name='date' defaultValue={date} placeholder="Deadline" className="input input-bordered w-full" required />
-                </div>
-
-                 <div className="form-control ">
-                     <label className="label">
-                        <span className="label-text">Feed back</span>
-                    </label>
-                    <textarea className="textarea textarea-bordered w-full" placeholder="Write each responsibility in a new line" name="feedback" required></textarea>
-                </div>
-
-                 {/* </div> */}
-                
-            
-            
-                </div>
-                <div className='mt-6'>
-                     <input className='btn w-full' type="submit" value=" Submit Assignment " />
-
-                </div>
-               
-            </form>
-            
-        </div>
-
-        <div className='mt-32'>
-             <Footer></Footer>
-        </div>
-
-      
-        </div>
-    );
+      <Footer />
+    </div>
+  );
 };
 
 export default Teachermarking;

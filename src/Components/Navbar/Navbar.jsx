@@ -1,185 +1,158 @@
-import React, { use, useEffect, useState } from 'react';
-import Authcontext from '../contexts/Authcontext';
-import { Link, NavLink } from 'react-router';
-import { Tooltip } from 'react-tooltip';
-import "./nav.css"
-
-import { easeOut, motion } from "framer-motion";
+import React, { useContext, useEffect, useState } from "react";
+import Authcontext from "../contexts/Authcontext";
+import { Link, NavLink } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
-     const {user,signOutuser} = use(Authcontext)
-//   console.log('hello.iam hero...')
-  // console.log(user.email)
+  const { user, signOutuser } = useContext(Authcontext);
 
-
-  const handlesignout =() =>{
+  const handleSignOut = () => {
     signOutuser()
-      .then(() => {
-       console.log("signou successful");
-      })
-      .catch((error) => {
-        console.log(error.message);       });
+      .then(() => console.log("Sign out successful"))
+      .catch((error) => console.log(error.message));
+  };
 
-  }
-   const links = <><li>hello</li>
-   </>
-     const [isDark, setIsDark] = useState(false);
+  // Theme toggle with localStorage persistence
+  const [isDark, setIsDark] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
 
- useEffect(() => {
-    // Add or remove "dark-theme" class to <body>
-    if (isDark) {
-      document.body.classList.add("dark-theme");
-    } else {
-      document.body.classList.remove("dark-theme");
-    }
+  useEffect(() => {
+    const theme = isDark ? "dark" : "light";
+    document.querySelector("html").setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
   }, [isDark]);
 
   const toggleTheme = () => {
-    setIsDark(prev => !prev);
+    setIsDark((prev) => !prev);
   };
 
+  // Common Links
+  const guestLinks = (
+    <>
+      <li><NavLink to="/">🏠 Home</NavLink></li>
+      <li><NavLink to="/faq">❓ FAQ</NavLink></li>
+      <li><NavLink to="/about">ℹ About</NavLink></li>
+    </>
+  );
 
-    return (
+  const userLinks = (
+    <>
+      <li><NavLink to="/">🏠 Home</NavLink></li>
+      <li><NavLink to="/faq">❓ FAQ</NavLink></li>
+      <li><NavLink to="/pending">🕒 Pending</NavLink></li>
+      <li><NavLink to="/my-attempts">📚 My Attempts</NavLink></li>
+      <li><NavLink to="/create-assignment">📝 Create</NavLink></li>
+    </>
+  );
 
-
-<div className="bg-white px-4   "data-tooltip-id="my-tooltip">
-  {/* Tooltip (No Changes) */}
-  {user && (<Tooltip id="my-tooltip">
-    <div className="  ">
-      
-        <>
-          <p className="font-bold ">
-            <span>Name: {user.displayName}</span>
-          </p>
-          <p>
-            <span>{user.email}</span>
-          </p>
-        </>
-      
-    </div>
-  </Tooltip>)}
-
-  {/* Navbar - Responsive Only For sm/md */}
-  <div className="navbar px-7 py-5 shadow-sm flex flex-wrap justify-between items-center">
-    {/* Left Part */}
-    <div className="navbar-start w-full md:w-auto flex items-center justify-between">
-      {/* Mobile Dropdown */}
-      <div className="dropdown">
-        <div tabIndex={0} role="button" className="btn btn-ghost p-1 lg:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 md:h-7 md:w-7"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </div>
-        <ul
-          tabIndex={0}
-          className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-10"
-        >
-          <li><NavLink to="/">🏠 Home</NavLink></li>
-          <li><NavLink to="/user">🗂 Browse Tasks</NavLink></li>
-          {user && <li><NavLink to="/pending">🕒 Pending Assignments</NavLink></li>}
-        </ul>
-      </div>
-
-      <a className="btn btn-ghost text-lg sm:text-xl text-black"><motion.span
-                            animate={{ color: ['#ecff33', '#33ffe3', '#ff6133'] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                        >ASSIGNMENT SITE</motion.span></a>
-    </div>
-
-    {/* Center Links - Show Only lg and above */}
-    <div className="navbar-center hidden lg:flex">
-      <ul className="menu menu-horizontal px-1">
-        <li className="font-bold text-black"><NavLink to="/">🏠 Home</NavLink></li>
-        <li className="font-bold text-black"><NavLink to="/faq">🗂 FAQ</NavLink></li>
-        {user && <li className="font-bold text-black"><NavLink to="/pending">🕒 Pending</NavLink></li>}
-      </ul>
-    </div>
-
-    {/* Theme Toggle */}
-    <div className="w-full md:w-auto flex justify-center items-center mt-2 md:mt-0 gap-2">
-      <span className="text-lg">{isDark ? '🌙' : '☀️'}</span>
-      <button onClick={toggleTheme}>
-        <input type="checkbox" value="synthwave" className="toggle toggle-sm bg-blue-700" />
-      </button>
-    </div>
-
-    {/* Right Side */}
-    <div className="navbar-end w-full md:w-auto flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4 mt-2 md:mt-0">
-      <NavLink to="/register" className="btn btn-sm md:btn font-bold hover:bg-blue-600 w-full md:w-auto">
-        Register
-      </NavLink>
-
-      {user ? (
-        <button
-          onClick={handlesignout}
-          className="btn btn-outline btn-sm md:btn hover:bg-green-400 text-black w-full md:w-auto"
-        >
-          Sign Out
-        </button>
-      ) : (
-        <Link to="/login" className="btn btn-outline btn-sm md:btn text-black hover:bg-purple-300 w-full md:w-auto">
-          Login Now
-        </Link>
-      )}
-
-      {/* Profile Dropdown */}
-      <details className="dropdown w-full md:w-auto mr-14">
-        <summary className="btn m-1 p-0 flex justify-center">
-          <img
-            className="h-10 w-10 rounded-full object-cover"
-            src={user?.photoURL || 'https://i.ibb.co/5hfGS1SV/user.png'}
-            alt="profile"
-          />
-        </summary>
-        <ul className="menu dropdown-content bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm">
-          <li>
-            <Link to="/create-assignment" className="block px-4 py-2 text-sm font-bold text-emerald-500">
-              📝 Create Assignments
-            </Link>
-          </li>
-          <li>
-            <Link to="/my-attempts" className="block px-4 py-2 text-sm font-bold text-blue-600">
-              📚 My Attempted Assignments
-            </Link>
-          </li>
-        </ul>
-      </details>
-
-      {/* Email - Optional: show below */}
+  return (
+    <div className="bg-primary text-white sticky top-0 z-50 w-full" data-tooltip-id="my-tooltip">
+      {/* Tooltip */}
       {user && (
-        <p className="text-xs sm:text-sm text-gray-600 truncate max-w-[200px] hidden sm:block">
-          {user.email}
-        </p>
+        <Tooltip id="my-tooltip">
+          <p className="font-bold">Name: {user.displayName}</p>
+          <p>{user.email}</p>
+        </Tooltip>
       )}
+
+      <div className="navbar px-4 max-w-7xl mx-auto">
+        {/* Left Section */}
+        <div className="navbar-start">
+          {/* Mobile Dropdown */}
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost p-1 lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
+                  d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box mt-3 w-52 p-2 shadow z-10"
+            >
+              {user ? userLinks : guestLinks}
+            </ul>
+          </div>
+
+          {/* Logo / Site Name */}
+          <Link to="/" className="btn btn-ghost lg:text-2xl md:text-xl sm:text-[16px] font-bold">
+            <motion.span
+              animate={{ color: ["#facc15", "#06b6d4", "#f43f5e"] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              ASSIGNMENT SITE
+            </motion.span>
+          </Link>
+        </div>
+
+        {/* Center Menu - Large screens */}
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1 font-semibold">
+            {user ? userLinks : guestLinks}
+          </ul>
+        </div>
+
+        {/* Right Section */}
+        <div className="navbar-end flex items-center gap-2">
+          {/* Theme Toggle */}
+          <div className="flex items-center gap-1">
+            <span className="hidden md:block lg:block">{isDark ? "🌙" : "☀️"}</span>
+            <input
+              type="checkbox"
+              className="toggle toggle-sm"
+              checked={isDark}
+              onChange={toggleTheme}
+            />
+          </div>
+
+          {/* Auth Buttons */}
+          {!user && (
+            <Link to="/register" className="btn btn-sm btn-secondary">
+              Register
+            </Link>
+          )}
+          {user ? (
+            <button onClick={handleSignOut} className="btn btn-sm btn-error">
+              Sign Out
+            </button>
+          ) : (
+            <Link to="/login" className="btn btn-sm btn-accent">
+              Login
+            </Link>
+          )}
+
+          {/* Profile Dropdown */}
+          {user && (
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img
+                    src={user?.photoURL || "https://i.ibb.co/5hfGS1SV/user.png"}
+                    alt="Profile"
+                  />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box w-52 mt-3 shadow"
+              >
+                <li><Link to="/create-assignment">📝 Create Assignments</Link></li>
+                <li><Link to="/my-attempts">📚 My Attempted Assignments</Link></li>
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
-  </div>
-
-
-
-  
-
-  
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    );
+  );
 };
 
 export default Navbar;

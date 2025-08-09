@@ -49,6 +49,7 @@ const AuthProvider = ({children}) => {
     const unscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser)
       setUser(currentUser);
+     
        setLoading(false);
 
       //  for tokken ....

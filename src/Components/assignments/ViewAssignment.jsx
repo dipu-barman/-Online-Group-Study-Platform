@@ -1,91 +1,110 @@
-import React from 'react';
-import { Link } from 'react-router';
-import student4 from '../../assets/Animation - 1750224884450.json'
-import Lottie from 'lottie-react';
-import Navbar from '../Navbar/Navbar';
-import { useLoaderData } from 'react-router';
-import { BsBootstrapReboot } from 'react-icons/bs';
-import { GoAlertFill } from 'react-icons/go';
-import Footer from '../footer/Footer';
-import Searchpart2 from '../Search/Searchpart2';
+import React from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import Lottie from "lottie-react";
+import { BsBootstrapReboot } from "react-icons/bs";
+import { GoAlertFill } from "react-icons/go";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../footer/Footer";
+import student4 from "../../assets/Animation - 1750224884450.json";
+import student5 from "../../assets/Female Character Walking.json";
+import student6 from "../../assets/Book.json";
+import student7 from "../../assets/Graduation Hat.json";
 
 const ViewAssignment = () => {
-  
+  const { _id, title, photo, mark, level, deadline, description, myemail } =
+    useLoaderData();
 
-    const {
-_id,title,photo,mark,level,deadline,description,myemail} =useLoaderData()
+  const style = { height: 280 };
 
-    
-  const style = {
-  height: 300,
-};
-    return (
-        <div>
-            <Navbar></Navbar>
-            <Searchpart2></Searchpart2>
-           <div className='flex flex-col md:flex-row justify-center items-center mt-12 gap-8 px-4'>
-  <div className='w-full md:w-1/2 flex justify-center'>
-    <Lottie animationData={student4} style={style} />
-  </div>
-  <div className='w-full md:w-1/2 flex justify-center'>
-    <Lottie animationData={student4} style={style} />
-  </div>
-</div>
+  return (
+    <div className="bg-base-100 text-base-content min-h-screen">
+      {/* Navbar */}
+      <Navbar />
 
-<div className='mt-10 px-4'>
-  <div className='bg-[#0F0F0F26] p-6 md:p-16 rounded-2xl max-w-6xl mx-auto'>
-    <h2 className='text-center text-2xl font-semibold text-black'>Profile Details</h2>
-    <p className='text-center mt-4 text-black'>
-      A unique ID assigned by the state or country’s Bar Association confirming they are licensed to practice.
-      The specific field of law they focus on — like criminal law, corporate law, family law, intellectual property, real estate, or immigration.
-    </p>
-  </div>
-</div>
+      {/* Animated Header */}
+      <section className="flex flex-col md:flex-row justify-center items-center mt-12 gap-8 px-4">
+        <Lottie animationData={student6} style={style} className="max-w-sm" />
+        <Lottie animationData={student5} style={style} className="max-w-sm" />
+        <Lottie animationData={student7} style={style} className="max-w-sm" />
+      </section>
 
-<div className='border border-black rounded-2xl my-10 p-6 md:px-12 md:py-5 flex flex-col md:flex-row gap-6 md:gap-12 mx-auto w-11/12'>
-  <div className='flex justify-center md:justify-start'>
-    <img className='w-36 h-40 rounded-2xl' src={photo} alt="" />
-  </div>
-  <div>
-    <p className='text-[#176AE5] bg-[#176AE51A] px-3 py-2 rounded-3xl text-center'>{title} Experience</p>
-    <p className='text-xl font-bold mt-3 text-black'>level: {level}</p>
-    <div className='flex flex-col sm:flex-row gap-3 mt-2'>
-      <p className='font-semibold text-black'>{myemail}</p>
-      <p className='font-semibold text-black flex items-center'><BsBootstrapReboot className='mr-1' /> mark No: {mark}</p>
-    </div>
-    <div className='flex flex-col sm:flex-row gap-2 font-semibold mt-2'>
-      <p>{_id}</p>
-      <p>date: {deadline}</p>
-    </div>
-    <p className='font-semibold mt-2 text-black'><span className='text-[#09982F]'>{description}</span></p>
-  </div>
-</div>
-
-<div className='rounded-2xl bg-[#14141426] p-6 md:p-10 w-11/12 mx-auto mb-16'>
-  <h2 className='text-2xl font-semibold text-center text-black'>Submit on Assignment</h2>
-  <div className='flex flex-col sm:flex-row justify-between mt-4 gap-2'>
-    <p className='text-black'>Availability</p>
-    <p className='bg-[#09982F33] text-[#09982F] px-2 rounded-2xl text-center'>Assignment date Available Today</p>
-  </div>
-  <p className='text-center bg-[#FFA0001A] text-[#FFA000] mt-4 text-black p-2 flex flex-col sm:flex-row items-center justify-center gap-3'>
-    <GoAlertFill className='mt-1' />
-    <span>Due to high patient volume, we are currently accepting appointments for today only. We appreciate your understanding and cooperation.</span>
-  </p>
-  <div className='mt-5'>
-    <Link to="/take">
-      <button className='btn btn-block bg-[#0EA106] text-white rounded-3xl'>Take assignment</button>
-    </Link>
-  </div>
-</div>
-
-
-            <div>
-                <Footer></Footer>
-            </div>
-
-           
+      {/* Profile Info */}
+      <section className="mt-12 px-4">
+        <div className="card bg-base-200 shadow-lg w-10/12 mx-auto">
+          <div className="card-body items-center text-center">
+            <h2 className="card-title text-2xl font-bold">Profile Overview</h2>
+            <p className="opacity-80">
+              This assignment includes verified identity, expertise level, and
+              submission details. All records are up-to-date and compliant with
+              institutional guidelines.
+            </p>
+          </div>
         </div>
-    );
+      </section>
+
+      {/* Assignment Details */}
+      <section className="mt-10 px-4">
+        <div className="card lg:card-side bg-base-200 shadow-xl w-10/12 mx-auto">
+          <figure className="p-6">
+            <img
+              src={photo}
+              alt={`${title} photo`}
+              className="w-36 h-40 rounded-xl object-cover"
+            />
+          </figure>
+          <div className="card-body">
+            <span className="badge badge-primary badge-outline w-fit">
+              {title} Experience
+            </span>
+            <p className="text-xl font-bold mt-3">Level: {level}</p>
+            <div className="flex flex-wrap gap-4 mt-2 text-sm">
+              <span className="font-semibold">{myemail}</span>
+              <span className="flex items-center gap-1 font-semibold">
+                <BsBootstrapReboot /> Mark: {mark}
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-4 text-sm mt-2">
+              <span>ID: {_id}</span>
+              <span>Date: {deadline}</span>
+            </div>
+            <p className="mt-2 text-success font-medium">{description}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Submission Section */}
+      <section className="mt-12 px-4 mb-16">
+        <div className="card bg-base-200 shadow-lg w-10/12 mx-auto">
+          <div className="card-body">
+            <h2 className="card-title justify-center">Submit Your Assignment</h2>
+            <div className="flex flex-col sm:flex-row justify-between mt-4 gap-3">
+              <span>Availability</span>
+              <span className="badge badge-success badge-outline">
+                Available Today
+              </span>
+            </div>
+            <div className="alert alert-warning mt-4">
+              <GoAlertFill className="text-lg" />
+              <span>
+                Due to high volume, only today's submissions are currently
+                accepted. Thank you for your cooperation.
+              </span>
+            </div>
+            <div className="mt-5">
+              <Link to="/take">
+                <button className="btn btn-primary btn-block rounded-full">
+                  Take Assignment
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
 };
 
 export default ViewAssignment;

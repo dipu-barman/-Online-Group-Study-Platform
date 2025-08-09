@@ -1,54 +1,77 @@
-import React from 'react';
-import Navbar from '../Navbar/Navbar';
-import { Link } from 'react-router';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Myassignment = ({student,index}) => {
-    return (
-        <div>
-            
+const Myassignment = ({ student, index }) => {
+  const statusColor =
+    student.status === "Complete"
+      ? "badge-success"
+      : "badge-error";
 
-              <div className='bg-[#0F0F0F26] border-2  p-3 rounded-2xl w-10/12 mx-auto  mb-8' >
-                 <div className='flex justify-between  mb-5'>
-                     <button className='btn  btn-outline'> Suject name:
-                        {student.subject}</button>
-                  <button className='btn  btn-outline'> ASSIGHNMENT STATUS :
-                   <span className='text-red-500'> {student.status}</span></button>
-               
-
-                 </div>
-              <button className='btn btn-block btn-outline'> SUBJECT TITLE :{student.title}</button>
-               
-                <div className='flex justify-between'>
-                 <div className='pt-4 flex gap-3'>
-                  <p className='border-2 h-14 p-3 rounded-2xl'> NO :{index+1}</p>
-                  <p className='mt-4'> ROLL-NO: {student._id}</p>
-                 </div>
-                 <div className='border-l-2 pl-5 pt-5'>
-                  <p> STUDENT Name :{student.student}</p>
-                  <p> STUDENT Email :{student.myemail}</p>
-                 <p>EXAMINE NAME :{student.techer} </p>
-                 </div>
-                 <div className='border-l-2 pl-5 pt-5'>
-                     <p>OBTAINMARK :{student.mark}</p>
-                  <p>mark :{student.mark}</p>
-                  <p>date :{student.date} </p>
-                <p>FEED-BACK :{student.description} </p>
-                 </div>
-                 <div className='mt-4'>
-                    {/* to={`/mark/${student._id}` */}
-                   <Link ><button className='btn btn-primary'>
-                              Show more
-                          </button></Link>
-                 </div>
-                </div>
-
-
-
-            </div>
-
-
+  return (
+    <div className="card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 border border-base-200 rounded-xl">
+      <div className="card-body">
+        {/* Header Row */}
+        <div className="flex flex-wrap justify-between items-center gap-3 border-b border-base-200 pb-3">
+          <span className="badge badge-outline badge-primary text-sm px-3 py-2">
+            Subject: {student.subject}
+          </span>
+          <span className={`badge ${statusColor} text-sm px-3 py-2`}>
+            Status: {student.status}
+          </span>
         </div>
-    );
+
+        {/* Title */}
+        <h3 className="mt-4 text-lg font-bold text-primary">
+          {student.title}
+        </h3>
+
+        {/* Info Grid */}
+        <div className="grid sm:grid-cols-3 gap-4 mt-4 text-sm">
+          {/* Column 1 */}
+          <div className="space-y-2">
+            <p className="badge badge-outline">No: {index + 1}</p>
+            <p className="text-gray-500">Roll No: {student._id}</p>
+          </div>
+
+          {/* Column 2 */}
+          <div className="space-y-1">
+            <p>
+              <span className="font-medium">Student:</span> {student.student}
+            </p>
+            <p>
+              <span className="font-medium">Email:</span> {student.myemail}
+            </p>
+            <p>
+              <span className="font-medium">Examiner:</span> {student.techer}
+            </p>
+          </div>
+
+          {/* Column 3 */}
+          <div className="space-y-1">
+            <p>
+              <span className="font-medium">Marks:</span> {student.mark}
+            </p>
+            <p>
+              <span className="font-medium">Date:</span> {student.date}
+            </p>
+            <p>
+              <span className="font-medium">Feedback:</span>{" "}
+              {student.description || "No feedback given"}
+            </p>
+          </div>
+        </div>
+
+        {/* Action Button */}
+        <div className=" flex justify-end">
+          <Link to={`/assignment/${student._id}`}>
+            <button className="btn btn-primary btn-sm">
+              View Details
+            </button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Myassignment;

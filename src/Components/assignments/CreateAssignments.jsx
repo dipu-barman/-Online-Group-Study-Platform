@@ -1,160 +1,177 @@
-import React, { use, useContext, useState } from 'react';
-import Authcontext from '../contexts/Authcontext'
-import Swal from 'sweetalert2';
-import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
-import Navbar from '../Navbar/Navbar';
-import Footer from '../footer/Footer';
-import { data } from 'react-router';
+import React, { useContext, useState } from "react";
+import Authcontext from "../contexts/Authcontext";
+import Swal from "sweetalert2";
+import axios from "axios";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../footer/Footer";
+
 const CreateAssignments = () => {
-  const [selectedDate, setSelectedDate] = useState('');
-
-  const { user } = use(Authcontext);
-  // console.log(user.email)
-
+  const [loading, setLoading] = useState(false);
+  const { user } = useContext(Authcontext);
 
   const handleCreateAssignment = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const form = e.target;
-    const myemail = form.myemail.value;
-    const title = form.title.value;
-    const photo = form.photo.value;
-    const mark = form.mark.value;
-    const level = form.level.value;
-    const date = form.date.value;
-    const description = form.description.value;
-
     const newAssignment = {
-      title,
-      photo,
-      mark,
-      level,
-      deadline: date,
-      description,
-      myemail
+      title: form.title.value,
+      photo: form.photo.value,
+      mark: form.mark.value,
+      level: form.level.value,
+      deadline: form.date.value,
+      description: form.description.value,
+      myemail: form.myemail.value,
     };
 
-    console.log(newAssignment); // For now, log to check
-
-    // Send to backend (example URL)
-    //     fetch('https://my-assignment-11-server-rouge.vercel.app/assignmets', {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       },
-    //       body: JSON.stringify(newAssignment)
-    //     })
-    //       .then(res => res.json())
-    //       .then(data => {
-    //         console.log('Success:', data);
-    //         // Optionally clear form or show message
-
-    //           if(data.insertedId){
-    // //         console.log('affter adding ',data)
-    //         Swal.fire({
-    //   title: "added successful!",
-    //   icon: "success",
-    //   draggable: true
-    //  });
-    // })
-    // .catch(error => {
-    //   console.error('Error:', error);
-    // });
-
-    axios.post('https://my-assignment-11-server-rouge.vercel.app/assignmets', newAssignment)
-      .then(data => {
-        console.log(data.data)
-        if (data.data.insertedId) {
+    axios
+      .post("https://my-assignment-11-server-rouge.vercel.app/assignmets", newAssignment)
+      .then((res) => {
+        if (res.data.insertedId) {
           Swal.fire({
-            title: "added successful!",
+            title: "Assignment Created!",
+            text: "Your assignment has been successfully added.",
             icon: "success",
-            draggable: true
-          })
-          // navigate to homepage 
+            confirmButtonColor: "#570DF8",
+          });
+          form.reset();
         }
       })
-      .catch(err => {
-        console.log('Error:', err);
+      .catch(() => {
+        Swal.fire({
+          title: "Error!",
+          text: "Something went wrong. Please try again.",
+          icon: "error",
+          confirmButtonColor: "#E02424",
+        });
       })
-    //e.target.reset();
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
-    <div className=''>
-      <div>
-        <Navbar></Navbar>
-      </div>
-      <h2 className='text-3xl font-bold text-center mt-16 mb-8'>CREATE ASSIGNMENT FORM</h2>
+    <div className="min-h-screen flex flex-col bg-base-100">
+      <Navbar />
 
-      <form onSubmit={handleCreateAssignment} className='w-6/12 mx-auto border-2 rounded-3xl p-2'>
-        <div className='gap-5 space-y-5'>
-          {/* Title */}
+      {/* Header */}
+      <h2 className="text-3xl font-bold text-center mt-10 mb-8 text-primary">
+        Create Assignment
+      </h2>
+
+      {/* Form */}
+      <form
+        onSubmit={handleCreateAssignment}
+        className="w-full max-w-3xl mx-auto bg-base-200 p-8 rounded-2xl shadow-lg border border-base-300"
+      >
+        {/* Title */}
+        <div className="form-control mb-5">
+          <label className="label">
+            <span className="label-text font-semibold">Title</span>
+          </label>
+          <input
+            type="text"
+            name="title"
+            placeholder="Enter assignment title"
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+
+        {/* Email */}
+        <div className="form-control mb-5">
+          <label className="label">
+            <span className="label-text font-semibold">Email</span>
+          </label>
+          <input
+            type="email"
+            name="myemail"
+            value={user?.email || ""}
+            readOnly
+            className="input input-bordered w-full bg-base-300 cursor-not-allowed"
+          />
+        </div>
+
+        {/* Photo URL */}
+        <div className="form-control mb-5">
+          <label className="label">
+            <span className="label-text font-semibold">Photo URL</span>
+          </label>
+          <input
+            type="text"
+            name="photo"
+            placeholder="Paste image URL"
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+
+        {/* Marks & Difficulty */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Title</span>
+              <span className="label-text font-semibold">Total Marks</span>
             </label>
-            <input type="text" name='title' placeholder="Title" className="input input-bordered w-full" required />
+            <input
+              type="number"
+              name="mark"
+              defaultValue={60}
+              className="input input-bordered"
+              required
+            />
           </div>
+
           <div className="form-control">
             <label className="label">
-              <span className="label-text">email</span>
+              <span className="label-text font-semibold">Difficulty Level</span>
             </label>
-            <input type="email" name='myemail' value={user.email} placeholder="your email" className="input input-bordered w-full" required />
-          </div>
-
-          {/* Photo URL */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Photo URL</span>
-            </label>
-            <input type="text" name='photo' placeholder="Your photo URL" className="input input-bordered w-full" required />
-          </div>
-
-          {/* Mark & Difficulty */}
-          <div className='flex gap-6 w-full'>
-            <div className="form-control w-3/6">
-              <label className="label">
-                <span className="label-text">Total Mark</span>
-              </label>
-              <input type="number" name='mark' defaultValue={60} placeholder="Mark" className="input input-bordered" required />
-            </div>
-
-            <div className="form-control w-3/6 pl-12">
-              <label className="label">
-                <span className="label-text">Difficulty Level</span>
-              </label>
-              <select name='level' className="input input-bordered w-full max-w-xs border-2" required>
-                <option value="">Pick a type</option>
-                <option>Easy</option>
-                <option>Medium</option>
-                <option>Hard</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Deadline */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Deadline</span>
-            </label>
-            <input type="date" name='date' className="input input-bordered w-full" required />
-          </div>
-
-          {/* Description */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Description</span>
-            </label>
-            <textarea name="description" className="textarea textarea-bordered w-full" placeholder="Write each responsibility in a new line" required></textarea>
+            <select name="level" className="select select-bordered" required>
+              <option value="">Select Level</option>
+              <option>Easy</option>
+              <option>Medium</option>
+              <option>Hard</option>
+            </select>
           </div>
         </div>
 
-        <div className='mt-6'>
-          <input className='btn w-full' type="submit" value="Create Assignment" />
+        {/* Deadline */}
+        <div className="form-control mb-5">
+          <label className="label">
+            <span className="label-text font-semibold">Deadline</span>
+          </label>
+          <input
+            type="date"
+            name="date"
+            className="input input-bordered w-full"
+            required
+          />
         </div>
+
+        {/* Description */}
+        <div className="form-control mb-5">
+          <label className="label">
+            <span className="label-text font-semibold">Description</span>
+          </label>
+          <textarea
+            name="description"
+            className="textarea textarea-bordered w-full"
+            placeholder="Write assignment details here..."
+            required
+          ></textarea>
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className={`btn btn-primary w-full ${loading ? "loading" : ""}`}
+          disabled={loading}
+        >
+          {loading ? "Creating..." : "Create Assignment"}
+        </button>
       </form>
-      <div className='mt-14'><Footer></Footer></div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
