@@ -86,7 +86,7 @@ const ProfessionalCarousel = () => {
 
   return (
     <section className="w-10/12 mx-auto my-20 px-4 flex flex-col md:flex-row gap-12">
-      {/* Teachers Carousel */}
+      {/* Teachers Carousel ,,,,,,,,,,,,,,, */}
       <div className="flex-1">
         <h2 className="text-2xl font-semibold text-center mb-8 ">FEATURED TEACHERS</h2>
         <div className="relative bg-base-100 rounded-xl shadow-xl overflow-hidden h-96 flex items-center justify-center">
