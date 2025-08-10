@@ -3,6 +3,7 @@ import Authcontext from "../contexts/Authcontext";
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import { motion } from "framer-motion";
+import "./nav.css"
 
 const Navbar = () => {
   const { user, signOutuser } = useContext(Authcontext);
