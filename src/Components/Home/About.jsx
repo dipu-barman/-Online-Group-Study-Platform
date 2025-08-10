@@ -7,16 +7,16 @@ const About = () => {
     <div>
       <Navbar />
 
-      <section className="w-11/12 mx-auto p-12 bg-base-100 rounded-lg shadow-xl mt-16">
-        <h1 className="text-2xl font-bold text-center mb-12">
-          ABOUT OUR ONLINE ASSIGNMENT & STUDY PLATFORM
+      <section className="w-11/12 max-w-7xl mx-auto p-12 bg-base-100 rounded-lg shadow-xl mt-16">
+        <h1 className="text-2xl font-bold text-center mb-12 uppercase">
+          About Our Online Assignment & Study Platform
         </h1>
 
         <div className="grid md:grid-cols-2 gap-14">
           {/* Overview Card */}
           <div className="card bg-base-200 shadow-lg p-10 rounded-lg">
-            <h2 className="card-title font-semibold text-xl mb-6 ">
-              PLATFORM OVERVIEW
+            <h2 className="card-title font-semibold text-xl mb-6 uppercase tracking-wide ">
+              Platform Overview
             </h2>
             <p className="text-base-content leading-relaxed text-lg mb-4">
               Our platform bridges the gap between <span className="font-semibold">students</span> and <span className="font-semibold">teachers</span>, providing a dynamic, collaborative environment for managing assignments and learning resources efficiently.
@@ -32,7 +32,7 @@ const About = () => {
           {/* Features Cards */}
           <div className="space-y-10">
             <div className="card bg-base-200 shadow-md p-8 rounded-lg">
-              <h3 className="text-xl font-semibold mb-5">STUDENT BENEFITS</h3>
+              <h3 className="text-xl font-semibold mb-5 uppercase tracking-wide">Student Benefits</h3>
               <ul className="list-disc list-inside text-base-content space-y-3 text-lg leading-relaxed">
                 <li>Access and submit assignments seamlessly across multiple subjects and instructors.</li>
                 <li>Track deadlines, grades, and progress with personalized dashboards.</li>
@@ -44,7 +44,7 @@ const About = () => {
             </div>
 
             <div className="card bg-base-200 shadow-md p-8 rounded-lg">
-              <h3 className="text-xl font-semibold mb-5">TEACHER CAPABILITIES</h3>
+              <h3 className="text-xl font-semibold mb-5 uppercase tracking-wide">Teacher Capabilities</h3>
               <ul className="list-disc list-inside text-base-content space-y-3 text-lg leading-relaxed">
                 <li>Create, customize, and assign subject-specific assignments with varying difficulty levels.</li>
                 <li>Efficiently grade and provide detailed feedback through annotation tools.</li>
@@ -60,18 +60,14 @@ const About = () => {
         {/* Additional Sections */}
         <div className="mt-16 space-y-10">
           <div className="card bg-base-200 shadow-lg p-10 rounded-lg">
-            <h2 className="text-xl font-semibold  mb-6">
-             SECURITY & PRIVACY
-            </h2>
+            <h2 className="text-xl font-semibold mb-6 uppercase tracking-wide">Security & Privacy</h2>
             <p className="text-base-content text-lg leading-relaxed">
               We prioritize data security and user privacy by implementing robust encryption, secure authentication methods, and compliance with international data protection standards such as GDPR. Your academic data and personal information remain confidential and safe.
             </p>
           </div>
 
           <div className="card bg-base-200 shadow-lg p-10 rounded-lg">
-            <h2 className="text-xl font-semibold  mb-6">
-              SUPPORT & RESOURCES
-            </h2>
+            <h2 className="text-xl font-semibold mb-6 uppercase tracking-wide">Support & Resources</h2>
             <p className="text-base-content text-lg leading-relaxed mb-4">
               Our dedicated support team and extensive resource library ensure that students and teachers can navigate the platform effortlessly. From comprehensive guides to responsive customer service, help is always available.
             </p>
@@ -81,9 +77,7 @@ const About = () => {
           </div>
 
           <div className="card bg-base-200 shadow-lg p-10 rounded-lg">
-            <h2 className="text-xl font-semibold  mb-6">
-             COMMUNITY & COLLABORATION
-            </h2>
+            <h2 className="text-xl font-semibold mb-6 uppercase tracking-wide">Community & Collaboration</h2>
             <p className="text-base-content text-lg leading-relaxed mb-4">
               Our platform fosters a thriving educational community. Students can join study groups, participate in forums, and collaborate on projects, while teachers can organize workshops and share best teaching practices.
             </p>
@@ -93,36 +87,28 @@ const About = () => {
           </div>
 
           <div className="card bg-base-200 shadow-lg p-10 rounded-lg">
-            <h2 className="text-xl font-semibold  mb-6">
-              ACCESSIBILITY & INCLUSIVITY
-            </h2>
+            <h2 className="text-xl font-semibold mb-6 uppercase tracking-wide">Accessibility & Inclusivity</h2>
             <p className="text-base-content text-lg leading-relaxed">
               We are committed to providing an inclusive learning platform compliant with WCAG guidelines, ensuring accessibility for users with disabilities. Features include screen reader support, keyboard navigation, and adjustable UI settings.
             </p>
           </div>
 
           <div className="card bg-base-200 shadow-lg p-10 rounded-lg">
-            <h2 className="text-xl font-semibold  mb-6">
-              MOBILE & OFFLINE SUPPORT
-            </h2>
+            <h2 className="text-xl font-semibold mb-6 uppercase tracking-wide">Mobile & Offline Support</h2>
             <p className="text-base-content text-lg leading-relaxed">
               Our platform supports mobile devices and includes offline capabilities, enabling students and teachers to access assignments, resources, and submit work anytime, anywhere, even without a stable internet connection.
             </p>
           </div>
 
           <div className="card bg-base-200 shadow-lg p-10 rounded-lg">
-            <h2 className="text-xl font-semibold mb-6">
-              PERFORMANCE & SCALABILITY
-            </h2>
+            <h2 className="text-xl font-semibold mb-6 uppercase tracking-wide">Performance & Scalability</h2>
             <p className="text-base-content text-lg leading-relaxed">
               Built on a modern tech stack leveraging React, Tailwind CSS, DaisyUI, and backed by scalable backend infrastructure, our platform ensures smooth performance and can handle growing user bases without compromising speed or reliability.
             </p>
           </div>
 
           <div className="card bg-base-200 shadow-lg p-10 rounded-lg">
-            <h2 className="text-xl font-semibold  mb-6">
-             GLOBAL REACH & MULTILINGUAL SUPPORT
-            </h2>
+            <h2 className="text-xl font-semibold mb-6 uppercase tracking-wide">Global Reach & Multilingual Support</h2>
             <p className="text-base-content text-lg leading-relaxed">
               Designed for a global audience, our platform supports multiple languages and localized content, empowering learners and educators worldwide to connect and collaborate in their native languages.
             </p>
