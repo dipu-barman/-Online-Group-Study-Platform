@@ -17,6 +17,7 @@ import TakeAssignment from './Components/assignments/TakeAssignment.jsx'
 import Teachermarking from './Components/assignments/Teachermarking.jsx'
 import Privateroute from './Components/Private/Privateroute.jsx'
 import Faq from './Components/faq/Faq.jsx'
+import About from './Components/Home/About.jsx'
 
  // errorElement:<Eroor></Eroor>,
 const router = createBrowserRouter([
@@ -65,6 +66,11 @@ const router = createBrowserRouter([
     {
       path:"faq",
       Component:Faq
+    },
+
+    {
+      path:"/about",
+      Component:About
     }
     
     
