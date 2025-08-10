@@ -4,36 +4,29 @@
     border-radius: 2rem;
 }
 
-
+/* 
 /* src/App.css */
 
-body {
+/* body {
   margin: 0;
   padding: 20;
   background-color: white;
   color: black;
   font-family: sans-serif;
   transition: 0.3s;
-}
+} */
 
-body.dark-theme {
+/* body.dark-theme {
   background-color: #1e1e1e;
   color: white;
   padding: 10px 0px;
-}
+} */
 
 /* for dark or light theme for ... */
-.main {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center;
-  justify-content: center; */
-  /* min-height: 100vh; */
-}
 
-button {
+/* button { */
    /* padding: 10px 20px;
   margin-top: 20px;  */
   /* font-size: 16px; */
-  cursor: pointer;
-}
+  /* cursor: pointer;
+}  */

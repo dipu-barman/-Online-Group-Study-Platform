@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import { motion } from "framer-motion";
 import "./nav.css"
+import { FaGlobe } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, signOutuser } = useContext(Authcontext);
@@ -84,12 +85,12 @@ const Navbar = () => {
           </div>
 
           {/* Logo / Site Name */}
-          <Link to="/" className="btn btn-ghost lg:text-2xl md:text-xl sm:text-[16px] font-bold">
+          <Link to="/" className="btn btn-ghost lg:text-2xl md:text-xl sm:text-[16px] font-bold"><FaGlobe className="text-white text-2xl" /> 
             <motion.span
               animate={{ color: ["#facc15", "#06b6d4", "#f43f5e"] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
-              ASSIGNMENT SITE
+              EDU-NEXUS
             </motion.span>
           </Link>
         </div>
