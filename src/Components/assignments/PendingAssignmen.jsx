@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../footer/Footer";
 import Authcontext from "../contexts/Authcontext";
 import Phendingstudent from "./Phendingstudent";
+import { data } from "react-router";
 
 const PendingAssignmen = () => {
   const [assignments, setAssignments] = useState([]);
@@ -21,8 +22,9 @@ const PendingAssignmen = () => {
     axios
       .get("https://my-assignment-11-server-rouge.vercel.app/assignmentmark")
       .then((res) => {
+        console.log(res.data)
         const pendingData = res.data.filter(
-          (item) => item.status === "phending"
+          (item) => item.status === "pending"
         );
         setAssignments(pendingData);
         setLoading(false);
@@ -32,6 +34,7 @@ const PendingAssignmen = () => {
         setLoading(false);
       });
   };
+  console.log(assignments)
 
   // Filter by subject (case-insensitive)
   const filtered = assignments.filter((assignment) =>
@@ -53,7 +56,7 @@ const PendingAssignmen = () => {
       <Navbar />
 
       <div className="text-center my-10">
-        <h1 className="text-3xl font-bold text-primary">All Pending Assignments</h1>
+        <h1 className="text-2xl font-semibold text-primary">All PENDING ASSIGNMENT</h1>
         <div className="mt-3 flex justify-center gap-4 flex-wrap px-4">
           <span className="badge badge-lg badge-success">
             Total: {sorted.length}

@@ -10,6 +10,7 @@ import Searchpart from '../Search/Searchpart';
 import AssignmentTimeline from '../AssignmentTimeline';
 import Newsletter from '../Newsletter';
 import ProfessionalCarousel from '../ProfessionalCarousel';
+import BookCollection from '../BookCollection';
 
 
 const Mainlayout = () => {
@@ -27,6 +28,7 @@ const Mainlayout = () => {
             <Outlet></Outlet>
             <div className='mt-10'>
                 <ProfessionalCarousel></ProfessionalCarousel>
+                <BookCollection></BookCollection>
                 <AssignmentTimeline></AssignmentTimeline>
                 <Section></Section>
                {/* <Newsletter></Newsletter> */}

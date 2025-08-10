@@ -42,36 +42,43 @@ const ViewAssignment = () => {
         </div>
       </section>
 
-      {/* Assignment Details */}
-      <section className="mt-10 px-4">
-        <div className="card lg:card-side bg-base-200 shadow-xl w-10/12 mx-auto">
-          <figure className="p-6">
-            <img
-              src={photo}
-              alt={`${title} photo`}
-              className="w-36 h-40 rounded-xl object-cover"
-            />
-          </figure>
-          <div className="card-body">
-            <span className="badge badge-primary badge-outline w-fit">
-              {title} Experience
-            </span>
-            <p className="text-xl font-bold mt-3">Level: {level}</p>
-            <div className="flex flex-wrap gap-4 mt-2 text-sm">
-              <span className="font-semibold">{myemail}</span>
-              <span className="flex items-center gap-1 font-semibold">
-                <BsBootstrapReboot /> Mark: {mark}
+     <section className="mt-10 w-10/12 mx-auto px-4">
+      <div className="card card-side bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-lg overflow-hidden">
+        {/* Image */}
+        <figure className="w-full md:w-5/12 p-4 flex justify-center items-center bg-base-100">
+          <img 
+            src={photo} 
+            alt={`${title} photo`} 
+            className="rounded-lg object-cover max-h-60 md:max-h-72 w-full" 
+          />
+        </figure>
+
+        {/* Content */}
+        <div className="w-full md:w-7/12 p-6 flex flex-col justify-between space-y-4">
+          <div>
+            <h2 className="text-2xl font-extrabold text-primary">{title} Experience</h2>
+            <p className="mt-2 text-lg font-semibold ">Level: <span className="capitalize">{level}</span></p>
+
+            <div className="flex flex-wrap gap-6 mt-4 text-sm text-base-content">
+              <span className="font-semibold underline decoration-primary decoration-2 cursor-default">
+                {myemail}
+              </span>
+              <span className="flex items-center gap-1 font-semibold text-accent">
+                <BsBootstrapReboot size={18} /> Mark: {mark}
               </span>
             </div>
-            <div className="flex flex-wrap gap-4 text-sm mt-2">
-              <span>ID: {_id}</span>
-              <span>Date: {deadline}</span>
-            </div>
-            <p className="mt-2 text-success font-medium">{description}</p>
-          </div>
-        </div>
-      </section>
 
+            <div className="flex flex-wrap gap-6 mt-2 text-xs text-muted">
+              <span>ID: <code className="bg-base-300 px-1 rounded">{_id}</code></span>
+              <span>Deadline: <time dateTime={deadline}>{deadline}</time></span>
+            </div>
+            <p className="mt-5 text-base font-medium text-base-content">{description}</p>
+          </div>
+
+          {/* <p className="text-base font-medium text-base-content">{description}</p> */}
+        </div>
+      </div>
+    </section>
       {/* Submission Section */}
       <section className="mt-12 px-4 mb-16">
         <div className="card bg-base-200 shadow-lg w-10/12 mx-auto">
@@ -83,7 +90,7 @@ const ViewAssignment = () => {
                 Available Today
               </span>
             </div>
-            <div className="alert alert-warning mt-4">
+            <div className="alert  mt-4">
               <GoAlertFill className="text-lg" />
               <span>
                 Due to high volume, only today's submissions are currently

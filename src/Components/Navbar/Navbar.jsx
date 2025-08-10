@@ -115,12 +115,12 @@ const Navbar = () => {
 
           {/* Auth Buttons */}
           {!user && (
-            <Link to="/register" className="btn btn-sm btn-secondary">
+            <Link to="/register" className="btn btn-sm btn-accent">
               Register
             </Link>
           )}
           {user ? (
-            <button onClick={handleSignOut} className="btn btn-sm btn-error">
+            <button onClick={handleSignOut} className="btn btn-sm btn-accent">
               Sign Out
             </button>
           ) : (
@@ -142,7 +142,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box w-52 mt-3 shadow"
+                className="menu menu-sm dropdown-content bg-black  rounded-box w-52 mt-3 shadow"
               >
                 <li><Link to="/create-assignment">📝 Create Assignments</Link></li>
                 <li><Link to="/my-attempts">📚 My Attempted Assignments</Link></li>

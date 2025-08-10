@@ -256,7 +256,7 @@ const Register = () => {
           />
         </form>
 
-        <p> Already have an account? <Link className='text-blue-500' to="/login">login</Link></p>
+        <p className='text-black'> Already have an account? <Link className='text-blue-500' to="/login">login</Link></p>
 
         {/* <p className="text-center text-sm mt-4">
           ?
@@ -277,8 +277,11 @@ const Register = () => {
           animationData=""
         /> */}
       </div>
+      <div className='text-center '><Link to='/'><button className='btn btn-primary text-center'>Go back home</button></Link></div>
     </div>
+    
         </div>
+        
             
         </div>
     );

@@ -62,13 +62,13 @@ const Myassignment = ({ student, index }) => {
         </div>
 
         {/* Action Button */}
-        <div className=" flex justify-end">
+        {/* <div className=" flex justify-end">
           <Link to={`/assignment/${student._id}`}>
             <button className="btn btn-primary btn-sm">
               View Details
             </button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

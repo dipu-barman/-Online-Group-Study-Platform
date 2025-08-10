@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../footer/Footer';
 import { GoAlertFill } from 'react-icons/go';
-import { InfinitySpin } from 'react-loader-spinner'; // প্রফেশনাল লোডার
+import { InfinitySpin } from 'react-loader-spinner'; // ......
 
 const Teachermarking = () => {
   const navigate = useNavigate();
@@ -14,9 +14,9 @@ const Teachermarking = () => {
   const [status, setStatus] = useState('');
   const [initialDate, setInitialDate] = useState('');
   const [google, setGoogle] = useState('');
-  const [loading, setLoading] = useState(true); // লোডিং স্টেট
+  const [loading, setLoading] = useState(true); // .........
 
-  // ডাটা সেট করা এবং লোডার হাইড করা
+  // ...............
   useEffect(() => {
     if (data) {
       setId(data._id);
@@ -108,7 +108,7 @@ const Teachermarking = () => {
             Teacher Available Today
           </p>
         </div>
-        <p className="bg-warning/20 text-warning p-3 rounded-lg flex items-center gap-2 justify-center text-center">
+        <p className=" text-warning p-3 rounded-lg flex items-center gap-2 justify-center text-center">
           <GoAlertFill className="text-xl" />
           <span>
             Google Docs Link:{' '}
@@ -119,7 +119,7 @@ const Teachermarking = () => {
         </p>
         <button
           type="button"
-          className="btn btn-block btn-success mt-5 rounded-3xl"
+          className="btn btn-block btn-primary mt-5 rounded-3xl"
           onClick={() => window.open(google, '_blank')}
         >
           Open Document
@@ -128,8 +128,8 @@ const Teachermarking = () => {
 
       {/* Marking Form */}
       <main className="flex-grow max-w-3xl mx-auto w-full p-8 mt-16 rounded-3xl bg-base-200 shadow-lg">
-        <h2 className="text-3xl font-extrabold text-center mb-12 text-primary">
-          Marking Assignment Form
+        <h2 className="text-2xl font-semibold text-center mb-12 ">
+          MARKING ASSIGNMENT  FORM
         </h2>
 
         <form onSubmit={handleUpdate} className="space-y-8">

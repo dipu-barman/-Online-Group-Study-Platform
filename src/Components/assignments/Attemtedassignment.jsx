@@ -61,7 +61,7 @@ const Attemtedassignment = () => {
       <Navbar />
 
       <div className="flex flex-col items-center mt-12 mb-8 px-4">
-        <h2 className="text-3xl font-bold text-primary">Completed Assignments</h2>
+        <h2 className="text-2xl font-semibold text-primary">COMPLETED ASSIGNMENT</h2>
 
         <input
           type="text"

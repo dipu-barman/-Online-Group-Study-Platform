@@ -55,8 +55,8 @@ const CreateAssignments = () => {
       <Navbar />
 
       {/* Header */}
-      <h2 className="text-3xl font-bold text-center mt-10 mb-8 text-primary">
-        Create Assignment
+      <h2 className="text-2xl font-semibold text-center mt-10 mb-8 ">
+        CREATE ASSIGNMENT
       </h2>
 
       {/* Form */}

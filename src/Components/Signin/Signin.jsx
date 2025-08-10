@@ -166,11 +166,14 @@ const handleSignIn = (e) => {
 
        
       </div>
+      
    
 </div>
-        </div> 
+<div className='text-center mt-24'><Link to='/'><button className='btn btn-primary text-center'>Go back home</button></Link></div>
+        </div>   
+        
         </div>
-            
+          
         </div>
     );
 };

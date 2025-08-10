@@ -43,7 +43,7 @@ const PublicAssignmetCard = ({ assignmet, asignmets, setAssignmets }) => {
         <img
           src={assignmet.photo}
           alt={assignmet.title}
-          className=" h-32 rounded-xl object-cover"
+          className=" w-68 h-48  rounded-xl "
         />
       </figure>
       <div className="card-body">
@@ -58,7 +58,7 @@ const PublicAssignmetCard = ({ assignmet, asignmets, setAssignmets }) => {
         <h2 className="card-title mt-2">{assignmet.title}</h2>
         <p className="text-sm text-base-content">{assignmet.description}</p>
         <p className="text-sm text-gray-500 flex items-center gap-1">
-          <BsBootstrapReboot /> Submit date: {assignmet.date || "N/A"}
+          <BsBootstrapReboot /> Submit date: {assignmet.deadline || "N/A"}
         </p>
 
         {/* Actions */}
