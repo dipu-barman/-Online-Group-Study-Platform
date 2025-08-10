@@ -51,8 +51,8 @@ const Faq = () => {
       <Navbar />
 
       <div className="max-w-screen-lg mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-10 mt-14">
-          <span className="text-primary">Frequently</span> Asked Questions
+        <h2 className="text-2xl font-bold text-center mb-10 mt-14">
+         <span className="text-primary">FREQUENTLY</span> ASKED QUESTIONS
         </h2>
 
         <div className="space-y-4">
